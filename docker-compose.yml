@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  uploader:
+    build: ./uploader
+    ports:
+      - "7860:7860"
+    volumes:
+      - ~/fooocus/data/models/loras:/shared_models/loras
+      - ~/fooocus/data/models/checkpoints:/shared_models/checkpoints
+    environment:
+      - BASE_DIR=/shared_models
+    deploy:
+      resources:
+        limits:
+          memory: 8g
+    ulimits:
+      nofile:
+        soft: 65535
+        hard: 65535
