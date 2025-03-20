@@ -30,4 +30,3 @@ services:
         soft: 65536
         hard: 65536
 
-# Test Edit - This line was added to test Git functionality
