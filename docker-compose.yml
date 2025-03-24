@@ -1,7 +1,7 @@
-version: "3.8"
 services:
   uploader:
-    build: ./uploader
+    build: .
+    image: ${CI_REGISTRY_IMAGE:-sd-model-uploader}:${IMAGE_VERSION:-latest}
     ports:
       - "7860:7860"
     volumes:

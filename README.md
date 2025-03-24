@@ -10,10 +10,10 @@ This application provides a simple Gradio-based interface to upload models (`.sa
 ### Docker Compose Setup:
 
 ```yaml
-version: '3.8'
 services:
   uploader:
     build: .
+    image: ${CI_REGISTRY_IMAGE:-sd-model-uploader}:${IMAGE_VERSION:-latest}
     ports:
       - "7860:7860"
     volumes:
@@ -29,4 +29,5 @@ services:
       nofile:
         soft: 65536
         hard: 65536
+```
 
