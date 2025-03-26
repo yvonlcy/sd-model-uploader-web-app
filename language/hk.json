@@ -1,0 +1,18 @@
+{
+    "Title": "模型上載工具",
+    "Description": "上載模型檔案（LoRAs或Checkpoints）到你嘅模型目錄",
+    "ModelType": "模型類型",
+    "UploadModel": "上載模型",
+    "UploadStatus": "上載狀態",
+    "UploadButton": "上載",
+    "RefreshButton": "更新檔案資訊",
+    "FileInfoTable": "已上載模型資訊",
+    "TableHeaders": {
+        "Filename": "檔案名稱",
+        "Size": "大小",
+        "UploadedDate": "上載日期"
+    },
+    "NoFilesUploaded": "冇上載有效檔案。",
+    "UploadSuccess": "已上載：{files}",
+    "DirectoryNotFound": "搵唔到目錄"
+}

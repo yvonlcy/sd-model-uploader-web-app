@@ -1,0 +1,18 @@
+{
+    "Title": "模型上传器",
+    "Description": "上传模型文件（LoRAs或Checkpoints）到您的模型目录",
+    "ModelType": "模型类型",
+    "UploadModel": "上传模型",
+    "UploadStatus": "上传状态",
+    "UploadButton": "上传",
+    "RefreshButton": "刷新文件信息",
+    "FileInfoTable": "已上传模型信息",
+    "TableHeaders": {
+        "Filename": "文件名",
+        "Size": "大小",
+        "UploadedDate": "上传日期"
+    },
+    "NoFilesUploaded": "没有上传有效文件。",
+    "UploadSuccess": "已上传：{files}",
+    "DirectoryNotFound": "未找到目录"
+}

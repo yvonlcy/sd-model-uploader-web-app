@@ -1,0 +1,18 @@
+{
+    "Title": "Models Uploader",
+    "Description": "Upload model files (LoRAs or Checkpoints) to your models directory",
+    "ModelType": "Model Type",
+    "UploadModel": "Upload Model(s)",
+    "UploadStatus": "Upload Status",
+    "UploadButton": "Upload",
+    "RefreshButton": "Refresh File Info",
+    "FileInfoTable": "Uploaded Models Info",
+    "TableHeaders": {
+        "Filename": "Filename",
+        "Size": "Size",
+        "UploadedDate": "Uploaded Date"
+    },
+    "NoFilesUploaded": "No valid files uploaded.",
+    "UploadSuccess": "Uploaded: {files}",
+    "DirectoryNotFound": "Directory not found"
+}

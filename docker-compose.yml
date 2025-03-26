@@ -1,14 +1,30 @@
 services:
   uploader:
-    build: .
     image: ${CI_REGISTRY_IMAGE:-sd-model-uploader}:${IMAGE_VERSION:-latest}
-    ports:
-      - "7860:7860"
+    container_name: model_uploader
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+    environment:
+      - BASE_DIR=/shared_models
+      - GRADIO_SERVER_NAME=0.0.0.0
+      - GRADIO_SERVER_PORT=7860
+      - GRADIO_ROOT_PATH=/uploader
+      - PYTHONUNBUFFERED=1
     volumes:
       - ~/fooocus/data/models/loras:/shared_models/loras
       - ~/fooocus/data/models/checkpoints:/shared_models/checkpoints
-    environment:
-      - BASE_DIR=/shared_models
+      - ~/docker/uploader/log:/app/log
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.uploader.rule=PathPrefix(`/uploader`)
+      - traefik.http.routers.uploader.entrypoints=websecure
+      - traefik.http.routers.uploader.tls=true
+      - traefik.http.routers.uploader.tls.certresolver=myresolver
+      - traefik.http.routers.uploader.service=uploader
+      - traefik.http.services.uploader.loadbalancer.server.port=7860
+    networks:
+      - traefik
     deploy:
       resources:
         limits:
@@ -17,3 +33,7 @@ services:
       nofile:
         soft: 65535
         hard: 65535
+
+networks:
+  traefik:
+    external: true
