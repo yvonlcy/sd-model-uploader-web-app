@@ -1,6 +1,6 @@
 services:
   uploader:
-    image: ${CI_REGISTRY_IMAGE:-sd-model-uploader}:${IMAGE_VERSION:-latest}
+    image: gitlab.kryedu.org:5050/cylo/sd-model-uploader-web-app:latest
     container_name: model_uploader
     restart: unless-stopped
     tty: true
