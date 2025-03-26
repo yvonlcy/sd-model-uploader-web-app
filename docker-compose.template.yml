@@ -1,0 +1,29 @@
+services:
+  uploader:
+    image: username/sd-model-uploader:latest   # Change to your image address
+    container_name: sd-model-uploader
+    restart: unless-stopped
+    ports:
+      - "7860:7860"    # Change if needed
+    volumes:
+      - ~/fooocus/data/models/loras:/shared_models/loras    # Change to your local path
+      - ~/fooocus/data/models/checkpoints:/shared_models/checkpoints    # Change to your local path
+    environment:
+      - BASE_DIR=/shared_models
+      - PYTHONUNBUFFERED=1
+    # If using Traefik, uncomment below and adjust values
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.sd-uploader.rule=PathPrefix(`/sd-uploader`)
+      - traefik.http.routers.sd-uploader.entrypoints=websecure
+      - traefik.http.routers.sd-uploader.tls=true
+      - traefik.http.routers.sd-uploader.tls.certresolver=myresolver
+      - traefik.http.routers.sd-uploader.service=sd-uploader
+      - traefik.http.services.sd-uploader.loadbalancer.server.port=7860
+    networks:
+      - traefik
+
+# If using Traefik, uncomment below
+networks:
+  traefik:
+    external: true
